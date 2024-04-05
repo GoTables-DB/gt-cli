@@ -27,8 +27,8 @@ type Column struct {
 }
 
 type Table struct {
-	Columns []Column   `json:"columns"`
-	Rows    [][]string `json:"rows"`
+	Columns []Column         `json:"columns"`
+	Rows    []map[string]any `json:"rows"`
 }
 
 func (t Table) Ascii() string {
@@ -40,8 +40,9 @@ func (t Table) Ascii() string {
 	for i := 0; i < len(t.Columns); i++ {
 		maxLengths[i+1] = len(t.Columns[i].Name)
 		for j := 0; j < len(t.Rows); j++ {
-			if len(t.Rows[j][i]) > maxLengths[i+1] {
-				maxLengths[i+1] = len(t.Rows[j][i])
+			length := len(t.Rows[j][t.Columns[i].Name].(string))
+			if length > maxLengths[i+1] {
+				maxLengths[i+1] = length
 			}
 		}
 	}
@@ -59,7 +60,7 @@ func (t Table) Ascii() string {
 	for i := 1; i < y; i++ {
 		content[0] = strconv.Itoa(i)
 		for j := 1; j < x; j++ {
-			content[j] = t.Rows[i-1][j-1]
+			content[j] = t.Rows[i-1][t.Columns[j-1].Name].(string)
 		}
 		out += drawContent(content, maxLengths)
 		out += drawSeparator(0, maxLengths)
