@@ -43,13 +43,6 @@ func start(location string) string {
 }
 
 func request(host string, input string, sql bool, token string) {
-	defer func() {
-		if r := recover(); r != nil {
-			// Recover from any panics within command execution
-			fmt.Println("Panic:", r)
-		}
-	}()
-
 	if sql {
 		cmdSQL.SetArgs(append(strings.Split(input, " "), "--host", host, "--token", token))
 		cmdSQL.Execute()

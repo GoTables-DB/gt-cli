@@ -31,7 +31,7 @@ type Table struct {
 	Rows    []map[string]any `json:"rows"`
 }
 
-func (t Table) Ascii() string {
+func (t Table) Draw() string {
 	out := ""
 	x := len(t.Columns) + 1
 	y := len(t.Rows) + 1
@@ -58,7 +58,7 @@ func (t Table) Ascii() string {
 	out += drawContent(content, maxLengths)
 	out += drawSeparator(1, maxLengths)
 	for i := 1; i < y; i++ {
-		content[0] = strconv.Itoa(i)
+		content[0] = strconv.Itoa(i - 1)
 		for j := 1; j < x; j++ {
 			content[j] = t.Rows[i-1][t.Columns[j-1].Name].(string)
 		}
@@ -125,7 +125,7 @@ func Request(host, path, query, sessionId string) (string, error) {
 	if err != nil {
 		return "", errors.New("Failed to read response body: " + err.Error())
 	}
-	return tbl.Ascii(), nil
+	return tbl.Draw(), nil
 }
 
 func HandleRequest(data string, err error) {
