@@ -39,7 +39,8 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		host := cmd.Flag("host").Value.String()
 		token := cmd.Flag("token").Value.String()
-		shared.MakeRequest("show", host, token)
+		query := "show " + shared.ConnectArgs(args)
+		shared.MakeRequest(query, host, token)
 	},
 }
 

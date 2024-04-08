@@ -130,7 +130,7 @@ func Request(host, path, query, sessionId string) (string, error) {
 
 func HandleRequest(data string, err error) {
 	if err != nil {
-		fmt.Println("Error: Failed to send http request: " + err.Error())
+		fmt.Println("Error: " + err.Error())
 	} else {
 		fmt.Println(data)
 	}
