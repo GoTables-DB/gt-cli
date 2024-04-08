@@ -27,13 +27,17 @@ import (
 )
 
 const (
-	VERSION = "0.1.0-beta1"
+	VERSION        = "0.1.0-beta"
+	CopyrightYear  = "2024"
+	CopyrightName  = "Jeroen Leuenberger"
+	CopyrightEmail = "jereileu@proton.me"
 )
 
 func main() {
 	fmt.Println("==================== GoTables CLI " + VERSION + " ====================")
-	fmt.Println("Exit the program with \"exit\"")
+	fmt.Println("Copyright © " + CopyrightYear + " " + CopyrightName + " <" + CopyrightEmail + ">")
 	fmt.Println("Type \"help\" to get information about commands")
+	fmt.Println("Exit the program with \"exit\"")
 	end := ""
 	for i := 0; i < 55+len(VERSION); i++ {
 		end += "="
