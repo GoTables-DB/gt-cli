@@ -22,12 +22,14 @@ THE SOFTWARE.
 package cmd
 
 import (
+	"git.jereileu.ch/gotables/client/gt-cli/shared"
+
 	"github.com/spf13/cobra"
 )
 
-// columnCmd represents the column command
-var columnCmd = &cobra.Command{
-	Use:   "column",
+// columnSetDefaultCmd represents the columnSetDefault command
+var columnSetDefaultCmd = &cobra.Command{
+	Use:   "default",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
@@ -35,19 +37,24 @@ and usage of using your command. For example:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-	// Run: func(cmd *cobra.Command, args []string) { fmt.Println("column called") },
+	Run: func(cmd *cobra.Command, args []string) {
+		host := cmd.Flag("host").Value.String()
+		token := cmd.Flag("token").Value.String()
+		query := "column set default " + shared.ConnectArgs(args)
+		shared.MakeRequest(query, host, token)
+	},
 }
 
 func init() {
-	rootCmd.AddCommand(columnCmd)
+	columnSetCmd.AddCommand(columnSetDefaultCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// columnCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// columnSetDefaultCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// columnCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// columnSetDefaultCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

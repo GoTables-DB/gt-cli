@@ -22,14 +22,12 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"git.jereileu.ch/gotables/client/gt-cli/shared"
-
 	"github.com/spf13/cobra"
 )
 
-// moveCmd represents the move command
-var moveCmd = &cobra.Command{
-	Use:   "move",
+// columnSetCmd represents the columnSet command
+var columnSetCmd = &cobra.Command{
+	Use:   "set",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
@@ -37,24 +35,19 @@ and usage of using your command. For example:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		host := cmd.Flag("host").Value.String()
-		token := cmd.Flag("token").Value.String()
-		query := "move " + shared.ConnectArgs(args)
-		shared.MakeRequest(query, host, token)
-	},
+	// Run: func(cmd *cobra.Command, args []string) { fmt.Println("columnSet called") },
 }
 
 func init() {
-	rootCmd.AddCommand(moveCmd)
+	columnCmd.AddCommand(columnSetCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// moveCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// columnSetCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// moveCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// columnSetCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

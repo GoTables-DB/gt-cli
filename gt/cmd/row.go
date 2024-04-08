@@ -22,8 +22,6 @@ THE SOFTWARE.
 package cmd
 
 import (
-	"git.jereileu.ch/gotables/client/gt-cli/shared"
-
 	"github.com/spf13/cobra"
 )
 
@@ -37,12 +35,7 @@ and usage of using your command. For example:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		host := cmd.Flag("host").Value.String()
-		token := cmd.Flag("token").Value.String()
-		query := "row " + shared.ConnectArgs(args)
-		shared.MakeRequest(query, host, token)
-	},
+	// Run: func(cmd *cobra.Command, args []string) { fmt.Println("row called") },
 }
 
 func init() {
