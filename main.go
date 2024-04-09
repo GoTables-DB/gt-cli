@@ -27,7 +27,7 @@ import (
 )
 
 const (
-	VERSION        = "0.1.0-beta"
+	VERSION        = "0.1.0"
 	CopyrightYear  = "2024"
 	CopyrightName  = "Jeroen Leuenberger"
 	CopyrightEmail = "jereileu@proton.me"
