@@ -30,13 +30,11 @@ import (
 // columnSetDefaultCmd represents the columnSetDefault command
 var columnSetDefaultCmd = &cobra.Command{
 	Use:   "default",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Set default value of a column",
+	Long: `This command sets the default value for cells
+in this column in new rows
+Requires db AND table to be set
+Syntax: column set default [name] [value]`,
 	Run: func(cmd *cobra.Command, args []string) {
 		host := cmd.Flag("host").Value.String()
 		token := cmd.Flag("token").Value.String()

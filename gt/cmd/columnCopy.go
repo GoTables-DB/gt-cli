@@ -30,13 +30,11 @@ import (
 // columnCopyCmd represents the columnCopy command
 var columnCopyCmd = &cobra.Command{
 	Use:   "copy",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Copy a column",
+	Long: `This command copies an existing column in a table
+and creates a new identical column with a different name
+Requires db AND table to be set
+Syntax: column copy [originalName] [newName]`,
 	Run: func(cmd *cobra.Command, args []string) {
 		host := cmd.Flag("host").Value.String()
 		token := cmd.Flag("token").Value.String()

@@ -28,13 +28,9 @@ import (
 // columnSetCmd represents the columnSet command
 var columnSetCmd = &cobra.Command{
 	Use:   "set",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Set properties of a column",
+	Long: `Set properties of a column
+Requires db AND table to be set`,
 	// Run: func(cmd *cobra.Command, args []string) { fmt.Println("columnSet called") },
 }
 

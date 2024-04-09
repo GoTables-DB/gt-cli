@@ -33,7 +33,7 @@ var (
 var rootCmd = &cobra.Command{
 	Use:   "",
 	Short: "gt-cli GT syntax",
-	Long:  `GoTables-CLI tool to interact with a GoTables server (GT)`,
+	Long:  `GoTables-CLI tool to interact with a GoTables server (GT syntax)`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {},

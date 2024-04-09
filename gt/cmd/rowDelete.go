@@ -30,13 +30,10 @@ import (
 // rowDeleteCmd represents the rowDelete command
 var rowDeleteCmd = &cobra.Command{
 	Use:   "delete",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Delete a row",
+	Long: `This command deletes a row in a table
+Requires db AND table to be set
+Syntax: row delete [index]`,
 	Run: func(cmd *cobra.Command, args []string) {
 		host := cmd.Flag("host").Value.String()
 		token := cmd.Flag("token").Value.String()

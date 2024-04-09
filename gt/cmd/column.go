@@ -28,13 +28,9 @@ import (
 // columnCmd represents the column command
 var columnCmd = &cobra.Command{
 	Use:   "column",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Column operations",
+	Long: `Operations on columns
+Requires db AND table to be set`,
 	// Run: func(cmd *cobra.Command, args []string) { fmt.Println("column called") },
 }
 

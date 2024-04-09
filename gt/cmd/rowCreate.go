@@ -30,13 +30,12 @@ import (
 // rowCreateCmd represents the rowCreate command
 var rowCreateCmd = &cobra.Command{
 	Use:   "create",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Create a row",
+	Long: `This command creates a new row in a table
+Requires db AND table to be set
+Syntax: row create
+If including values for cells
+Syntax: row create [columnName1:value] [columnName2:value] ...`,
 	Run: func(cmd *cobra.Command, args []string) {
 		host := cmd.Flag("host").Value.String()
 		token := cmd.Flag("token").Value.String()

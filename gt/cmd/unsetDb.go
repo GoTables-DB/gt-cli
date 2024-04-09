@@ -30,13 +30,12 @@ import (
 // unsetdbCmd represents the unsetdb command
 var unsetdbCmd = &cobra.Command{
 	Use:   "db",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Unset db",
+	Long: `Unset the name of the database to interact with
+Requires NOTHING to be set OR
+Requires db to be set OR
+Requires db AND table to be set
+Syntax: unset db`,
 	Run: func(cmd *cobra.Command, args []string) {
 		shared.Location = "/"
 	},

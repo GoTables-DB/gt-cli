@@ -29,13 +29,18 @@ import (
 // showCmd represents the show command
 var showCmd = &cobra.Command{
 	Use:   "show",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Display list of dbs tables or content of table",
+	Long: `Display a list of databases or tables in a database OR
+Display content of a table including specifying columns or conditions
+Requires NOTHING to be set OR
+Requires db to be set OR
+Requires db AND table to be set
+Syntax: show
+If specifying columns
+Syntax: show [name1:name2:name3 ... ]
+If including conditions
+Syntax: show [name1:name2:name3 ... ] where condition1 [&& / ||] condition2 ...
+Condition: [columnName / value] [== / != / < / <= / > / >=] [columnName / value]`,
 	Run: func(cmd *cobra.Command, args []string) {
 		host := cmd.Flag("host").Value.String()
 		token := cmd.Flag("token").Value.String()

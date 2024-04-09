@@ -31,13 +31,10 @@ import (
 // tableCmd represents the table command
 var tableCmd = &cobra.Command{
 	Use:   "table",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Set table",
+	Long: `Set the name of the table to interact with
+Requires db to be set
+Syntax: set table [name]`,
 	Run: func(cmd *cobra.Command, args []string) {
 		path, set := shared.DbSet(shared.Location)
 		if set {

@@ -30,13 +30,10 @@ import (
 // rowSetCmd represents the rowSet command
 var rowSetCmd = &cobra.Command{
 	Use:   "set",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Set value of cell",
+	Long: `This command sets the value of a cell in a row in a table
+Requires db AND table to be set
+Syntax: row set [rowIndex:columnName] [value]`,
 	Run: func(cmd *cobra.Command, args []string) {
 		host := cmd.Flag("host").Value.String()
 		token := cmd.Flag("token").Value.String()
