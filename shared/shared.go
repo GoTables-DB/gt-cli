@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -40,7 +41,8 @@ func (t Table) Draw() string {
 	for i := 0; i < len(t.Columns); i++ {
 		maxLengths[i+1] = len(t.Columns[i].Name)
 		for j := 0; j < len(t.Rows); j++ {
-			length := len(t.Rows[j][t.Columns[i].Name].(string))
+			value := checkValue(t.Rows[j][t.Columns[i].Name])
+			length := len(fmt.Sprint(value))
 			if length > maxLengths[i+1] {
 				maxLengths[i+1] = length
 			}
@@ -60,7 +62,8 @@ func (t Table) Draw() string {
 	for i := 1; i < y; i++ {
 		content[0] = strconv.Itoa(i - 1)
 		for j := 1; j < x; j++ {
-			content[j] = t.Rows[i-1][t.Columns[j-1].Name].(string)
+			value := checkValue(t.Rows[i-1][t.Columns[j-1].Name])
+			content[j] = fmt.Sprint(value)
 		}
 		out += drawContent(content, maxLengths)
 		out += drawSeparator(0, maxLengths)
@@ -207,4 +210,19 @@ func drawContent(content []string, lengths []int) string {
 		out += "|"
 	}
 	return out + "\n"
+}
+
+func checkValue(value any) any {
+	var ret any
+	switch value.(type) {
+	case float64:
+		if value == math.Trunc(value.(float64)) {
+			ret = int(value.(float64))
+		} else {
+			ret = value
+		}
+	default:
+		ret = value
+	}
+	return ret
 }
